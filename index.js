@@ -1,3 +1,6 @@
+//WORKED WITH NATALIE V.
+
+
 const morseCodeDictionary = require("./morse-code-dictionary.json");
 
 /**
@@ -5,7 +8,18 @@ const morseCodeDictionary = require("./morse-code-dictionary.json");
  * @param {String[]}  - An array of strings.
  * @returns {string[]} An array of strings.
  */
-function sortByStringLength() {}
+function sortByStringLength(strings) {
+let arrOfStrings = [];
+
+ //for(let newArr of sentence){
+  var sortedArr = .sort((a, b) => a.length - b.length);
+  arrOfStrings.push(sortedArr)
+ //}
+ 
+console.log(arrOfStrings)
+
+return arrOfStrings;
+}
 
 /**
  * Returns an array of the word in all scrolling positions.
