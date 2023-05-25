@@ -9,12 +9,10 @@ const morseCodeDictionary = require("./morse-code-dictionary.json");
  * @returns {string[]} An array of strings.
  */
 function sortByStringLength(strings) {
-  
-  return strings.sort((cee, bee) => cee.length - bee.length);
+
+  return strings.sort((cee, bee) => cee.length - bee.length);// We used a high order function to resolve this. The .sort was used to sort the objects within the array and we had two call-back functions in order to organize what the lengths of those objects were, by subtracting. 
 
 };
-
-
 /**
  * Returns an array of the word in all scrolling positions.
  * @param {String} word - A string.
@@ -22,9 +20,17 @@ function sortByStringLength(strings) {
  * Example: "Hello"
  * [ 'elloH', 'lloHe', 'loHel', 'oHell', 'Hello' ]
  */
-function textScroller(word) { 
+function textScroller(word) {
 
-  
+  let myWord = word.split("");
+  let arrayOfWords = [];
+
+  for (let i = 0; i < myWord.length; i++) {
+    myWord.push(myWord.shift());
+
+    arrayOfWords.push(myWord.join(""));
+  }
+  return arrayOfWords;
 }
 
 /**
@@ -32,8 +38,22 @@ function textScroller(word) {
  * @param {Number[]} numbers - An array of numbers.
  * @returns {Number} The difference between the largest and smallest number.
  */
-function betweenExtremes(numbers) { }
+function betweenExtremes(numbers) {
+  let arrayOfSubtraction = [];
 
+  for (let number of numbers) {
+    if (typeof number === 'string' || numbers.length === 0) {
+      return numbers;
+    }
+  }
+
+  const smallestNumber = Math.min(...numbers);
+  const biggestNumbers = Math.max(...numbers);
+  const subTraction = biggestNumbers - smallestNumber
+
+  return subTraction;
+
+}
 /**
  * Returns the difference between the largest and smallest number in the array
  * @param {String} message - A string to translate.
@@ -43,8 +63,23 @@ function betweenExtremes(numbers) { }
  * .- / -. . .-- / -- --- -. - ....
  */
 function morseCodeTranslator(message, dictionary) {
+  const note = []
 
- }
+  for (let i = 0; i < message.length; i++) {
+    const newNote = message[i].toUpperCase().split("");
+
+    const newWords = dictionary[newNote];
+
+    if (newWords) {
+      note.push(newWords)
+    }
+
+  }
+
+  return (note.join(" "))
+
+}
+
 
 module.exports = {
   sortByStringLength,
